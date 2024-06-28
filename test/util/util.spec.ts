@@ -8,6 +8,8 @@ describe("StringCalculator", () => {
     calculator = new StringCalculator();
   });
 
+
+
   it("should return 0 for an empty string", () => {
     expect(calculator.add("")).to.equal(0);
   });
@@ -21,6 +23,13 @@ describe("StringCalculator", () => {
     expect(calculator.add("1,2")).to.equal(3);
     expect(calculator.add("10,20")).to.equal(30);
   });
+
+  it("should throw error for invalid characters", () => {
+    expect(() => calculator.add("1,2,abc,4")).to.throw(
+      "invalid numbers not allowed: abc"
+    );
+  });
+
 
   it("should throw an error for negative numbers", () => {
     expect(() => calculator.add("1,-2,3")).to.throw(
