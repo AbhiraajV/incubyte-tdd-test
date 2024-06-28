@@ -7,6 +7,16 @@ app.get("/healthcheck", (req, res) => {
   res.send("Server is running");
 });
 
+app.get("/calc/add", (req, res) => {
+  const numbers = req.query.numbers as string;
+
+  try {
+    const result = calculator.add(numbers);
+    res.json({ result });
+  } catch (error) {
+    // res.status(400).json({ error: error.message });
+  }
+});
 
 const port = process.env.PORT || 8800;
 app.listen(port, () => {
