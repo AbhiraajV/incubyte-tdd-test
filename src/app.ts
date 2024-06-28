@@ -13,8 +13,8 @@ app.get("/calc/add", (req, res) => {
   try {
     const result = calculator.add(numbers);
     res.json({ result });
-  } catch (error) {
-    // res.status(400).json({ error: error.message });
+  } catch (error: any) {
+    res.status(400).json({ error: error.message });
   }
 });
 
