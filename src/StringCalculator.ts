@@ -3,6 +3,9 @@ export class StringCalculator {
     if (!numbers) {
       return 0;
     }
-    return -1;
+    const numbersArray: number[] = [];
+    numbers.split(",").forEach((number) => numbersArray.push(parseInt(number)));
+
+    return numbersArray.reduce((acc, num) => acc + num, 0);
   }
 }
