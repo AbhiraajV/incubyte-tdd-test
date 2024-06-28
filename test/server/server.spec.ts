@@ -52,4 +52,11 @@ describe("GET /calc/add", () => {
     expect(res.status).to.equal(400);
     expect(res.body.error).to.equal("negative numbers not allowed: -2");
   });
+  it("should return an error for invalid numbers", async () => {
+    const res = await request(app)
+      .get("/calc/add")
+      .query({ numbers: "1,abc,3" });
+    expect(res.status).to.equal(400);
+    expect(res.body.error).to.equal("invalid numbers not allowed: abc");
+  });
 });
