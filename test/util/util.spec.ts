@@ -22,4 +22,13 @@ describe("StringCalculator", () => {
     expect(calculator.add("10,20")).to.equal(30);
   });
 
+  it("should throw an error for negative numbers", () => {
+    expect(() => calculator.add("1,-2,3")).to.throw(
+      "negative numbers not allowed: -2"
+    );
+    expect(() => calculator.add("-1,2,-3")).to.throw(
+      "negative numbers not allowed: -1, -3"
+    );
+  });
+
 });
